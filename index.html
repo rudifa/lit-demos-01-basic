@@ -15,21 +15,34 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
+    p {
+      font-weight: bold;
+    }
   </style>
   <title>lit-demos-01-basic</title>
 </head>
 
 <body>
+  <p>basic-setup</p>
   <basic-setup></basic-setup>
+  <p>manage-properties</p>
   <manage-properties></manage-properties>
+  <p>property-changes</p>
   <property-changes></property-changes>
+  <p>properties-and-attributes</p>
   <properties-and-attributes message="Hello world of properties and attributes"></properties-and-attributes>
   <fancy-message messagePrefix="Here is the news:" message="web components fly"></fancy-message>
+  <p>passing-properties</p>
+  <passing-properties></passing-properties>
+  <!-- how do we initialize properties of type Object or Array ?
+  <author-profile .author="{'name': 'G.R.R. Martin'}"></author-profile> -->
 
   <script type="module" src="./src/01-basic-setup.js"></script>
   <script type="module" src="./src/02-manage-properties.js"></script>
   <script type="module" src="./src/03-property-changes.js"></script>
   <script type="module" src="./src/04-properties-and-attributes.js"></script>
+  <script type="module" src="./src/05-passing-properties.js"></script>
+
 </body>
 
 </html>
