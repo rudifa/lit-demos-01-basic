@@ -15,10 +15,10 @@ class FetchingData extends LitElement {
   }
 
   firstUpdated() {
-    fetch('https://swapi.co/api/people/') // , { mode: "no-cors" }) // syntax error!
+    fetch('https://quotes.rest/qod/')
       .then((r) => r.json())
       .then((r) => {
-        this.response = r.results;
+        this.response = r.contents.quotes;
       });
   }
 
@@ -27,7 +27,7 @@ class FetchingData extends LitElement {
     return html`
         <ul>
           ${response.map(item => html`
-            <li>${item.name}</li>
+            <li>${item.quote} - ${item.author}</li>
           `)}
         </ul>
       `;
