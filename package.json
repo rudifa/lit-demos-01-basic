@@ -5,7 +5,7 @@
   "author": "learn-js",
   "license": "MIT",
   "scripts": {
-    "start": "es-dev-server --app-index index.html --node-resolve --open --watch"
+    "start": "es-dev-server --app-index index.html --node-resolve --preserve-symlinks --open --watch"
   },
   "dependencies": {
     "lit-html": "^1.0.0",
