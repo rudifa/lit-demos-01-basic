@@ -1,0 +1,1 @@
+src/open-wc-logo.js
