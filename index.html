@@ -18,6 +18,9 @@
     p {
       font-weight: bold;
     }
+    .hot {
+      color: red
+    }
   </style>
   <title>lit-demos-01-basic</title>
 </head>
@@ -26,6 +29,9 @@
   <div>
     <a href="https://github.com/open-wc/lit-demos/tree/master/01-basic" target="_blank">lit-demos-01-basic</a>
   </div>
+  <p class='hot'>firing-events</p>
+  <fire-events-parent></fire-events-parent>
+
   <p>basic-setup</p>
   <basic-setup></basic-setup>
   <p>manage-properties</p>
@@ -52,8 +58,10 @@
   <render-styles></render-styles>
   <p>fetching-data</p>
   <fetching-data></fetching-data>
+  <!--
   <p>firing-events</p>
-  <fire-events-parent></fire-events-parent>
+  <fire-events-parent></fire-events-parent> 
+  -->
 
   <script type="module" src="./src/01-basic-setup.js"></script>
   <script type="module" src="./src/02-manage-properties.js"></script>
