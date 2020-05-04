@@ -22,7 +22,7 @@ class FireEventsParent extends LitElement {
   }
 
   sliderCallback(event) {
-    this._messageFromChild = `child slider ${event.detail}`  
+    this._messageFromChild = `child slider ${event.detail}`
   }
 
   render() {
@@ -30,7 +30,7 @@ class FireEventsParent extends LitElement {
       <fire-events-child @event-fired=${this.someCallback}></fire-events-child>
       <p>${this._messageFromChild}</p>
       <fire-events-sibling message=${this._messageForSibling}></fire-events-sibling>
-      <fire-events-slider @event-slider=${this.sliderCallback}></fire-events-slider>
+      <fire-events-slider value='0.6' @event-slider=${this.sliderCallback}></fire-events-slider>
     `;
   }
 }
@@ -56,23 +56,6 @@ class FireEventsChild extends LitElement {
   }
 }
 
-// Utility functions
-function clamp( val, min, max) {
-  return val <= min ? min : val >= max ? max : val;
-}
-
-function toRadians(degrees) {
-  return degrees * Math.PI / 180
-}
-
-function displacement(pt1, pt2) {
-  return {x: pt2.x - pt1.x, y: pt2.y - pt1.y}
-}
-
-function projection(pt, angledeg) {
-  let a = toRadians(angledeg)
-  return pt.x * Math.cos(a) + pt.y * Math.sin(a)
-}          
 
 
 class FireEventsSibling extends LitElement {
@@ -93,10 +76,29 @@ class FireEventsSibling extends LitElement {
   }
 }
 
+
+// Utility functions
+function clamp( val, min, max) {
+  return val <= min ? min : val >= max ? max : val;
+}
+
+function toRadians(degrees) {
+  return degrees * Math.PI / 180
+}
+
+function displacement(pt1, pt2) {
+  return {x: pt2.x - pt1.x, y: pt2.y - pt1.y}
+}
+
+function projection(pt, angledeg) {
+  let a = toRadians(angledeg)
+  return pt.x * Math.cos(a) + pt.y * Math.sin(a)
+}
+
 class FireEventsSlider extends LitElement {
   static get properties() {
     return {
-      _circle_pos: { type: Number },
+      value: { type: Number },
     }
   }
 
@@ -105,8 +107,8 @@ class FireEventsSlider extends LitElement {
     this._drag_offset = undefined
     this._slider_pos = 0.75  // 0.0...1.0
   }
-  
-  get value() { return this._slider_pos; }  
+
+  get value() { return this._slider_pos; }
   set value(val) {
     let oldVal = this._slider_pos;
     this._slider_pos = clamp(val, 0.0, 1.0);
@@ -121,23 +123,23 @@ class FireEventsSlider extends LitElement {
       pt.x = evt.touches[0].clientX; pt.y = evt.touches[0].clientY;
     } else {
       pt.x = evt.clientX; pt.y = evt.clientY;
-    }    
+    }
     pt = pt.matrixTransform(CTM.inverse());
-    //console.log('_getPosition', evt.target.id, 'svg', svg, 'CTM', CTM, 'pt', pt) 
+    //console.log('_getPosition', evt.target.id, 'svg', svg, 'CTM', CTM, 'pt', pt)
     return pt
   }
 
   _dragStart(evt) {
     if (evt.target.id == 'thumb') {
       this._drag_offset = this._getPosition(evt)
-      //console.log('_dragStart', evt.target.id, 'mousePos', this.drag_) 
+      //console.log('_dragStart', evt.target.id, 'mousePos', this.drag_)
     }
   }
 
   _dragMove(evt) {
     if (this._drag_offset && evt.target.id == 'thumb') {
       let pos = this._getPosition(evt)
-      //console.log('_dragMove', evt.target.id, pos) 
+      //console.log('_dragMove', evt.target.id, pos)
       let displ = displacement(this._drag_offset, pos)
       let proj = projection(displ, 0)
       this._drag_offset = pos

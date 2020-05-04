@@ -32,12 +32,13 @@
   <p class='hot'>firing-events</p>
   <fire-events-parent></fire-events-parent>
   <div>
-    <fire-events-slider id='slider1'></fire-events-slider>
+    <happui-slider id='slider1' value='0.4'></happui-slider>
     <p id='para1'>...</p>
     <script>
       const para1 = document.getElementById('para1');
       const slider1 = document.getElementById('slider1');
-      slider1.addEventListener('event-slider', (e) => {console.log(e); para1.innerHTML=`slider1 ${e.detail}`});
+      //slider1.addEventListener('event-slider', (e) => {console.log(e); para1.innerHTML=`slider1 ${e.detail}`});
+      slider1.addEventListener('event-slider', (e) => {para1.innerHTML=`slider1 ${e.detail}`});
     </script>
   </div>
   <p>basic-setup</p>
@@ -68,7 +69,7 @@
   <fetching-data></fetching-data>
   <!--
   <p>firing-events</p>
-  <fire-events-parent></fire-events-parent> 
+  <fire-events-parent></fire-events-parent>
   -->
 
   <script type="module" src="./src/01-basic-setup.js"></script>
@@ -83,6 +84,7 @@
   <script type="module" src="./src/10-render-styles.js"></script>
   <script type="module" src="./src/11-fetching-data.js"></script>
   <script type="module" src="./src/12-firing-events.js"></script>
+  <script type="module" src="./src/happui-slider.js"></script>
 
 </body>
 
