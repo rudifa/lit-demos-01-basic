@@ -22,7 +22,7 @@ class FireEventsParent extends LitElement {
   }
 
   sliderCallback(event) {
-    this._messageFromChild = event.detail  
+    this._messageFromChild = `child slider ${event.detail}`  
   }
 
   render() {
@@ -103,13 +103,13 @@ class FireEventsSlider extends LitElement {
   constructor() {
     super()
     this._drag_offset = undefined
-    this._circle_pos = 0.75  // 0.0...1.0
+    this._slider_pos = 0.75  // 0.0...1.0
   }
   
-  get value() { return this._circle_pos; }  
+  get value() { return this._slider_pos; }  
   set value(val) {
-    let oldVal = this._circle_pos;
-    this._circle_pos = clamp(val, 0.0, 1.0);
+    let oldVal = this._slider_pos;
+    this._slider_pos = clamp(val, 0.0, 1.0);
     this.requestUpdate('value', oldVal);
   }
 
@@ -142,10 +142,10 @@ class FireEventsSlider extends LitElement {
       let proj = projection(displ, 0)
       this._drag_offset = pos
       const rect_length = 100.0
-      let new_circlePos = this._circle_pos + proj / rect_length
+      let new_circlePos = this._slider_pos + proj / rect_length
       this.value = new_circlePos
       //console.log('_dragMove', evt.target.id, this.value)
-      this.dispatchEvent(new CustomEvent('event-slider', { detail: `slider value ${this.value.toFixed(2)}`}));
+      this.dispatchEvent(new CustomEvent('event-slider', { detail: `${this.value.toFixed(3)}`}));
     }
   }
 
@@ -168,7 +168,7 @@ class FireEventsSlider extends LitElement {
     >
       <g transform='translate(5,5)'>
         <rect x='0' y='0' width='100' height='10' fill='gray'/>
-        <circle id='thumb' cx='${this._circle_pos * 100}' cy='5' r='5' fill='white'
+        <circle id='thumb' cx='${this._slider_pos * 100}' cy='5' r='5' fill='white'
           />
       </g>
     </svg>`;

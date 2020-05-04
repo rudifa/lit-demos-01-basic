@@ -31,7 +31,15 @@
   </div>
   <p class='hot'>firing-events</p>
   <fire-events-parent></fire-events-parent>
-
+  <div>
+    <fire-events-slider id='slider1'></fire-events-slider>
+    <p id='para1'>...</p>
+    <script>
+      const para1 = document.getElementById('para1');
+      const slider1 = document.getElementById('slider1');
+      slider1.addEventListener('event-slider', (e) => {console.log(e); para1.innerHTML=`slider1 ${e.detail}`});
+    </script>
+  </div>
   <p>basic-setup</p>
   <basic-setup></basic-setup>
   <p>manage-properties</p>
