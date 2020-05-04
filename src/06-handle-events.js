@@ -16,7 +16,7 @@ class HandleEvents extends LitElement {
   }
 
   render() {
-    return html`
+    let retval = html`
       <div>
         Current count: [${this.count}]
         <!-- Use @[eventname] syntax to declaratively register inline event handlers -->
@@ -28,6 +28,9 @@ class HandleEvents extends LitElement {
         <button @click=${this._onDecrement}>-</button>
       </div>
     `;
+    console.log('HandleEvents.render.strings', retval.strings.join('###'))
+    console.log('HandleEvents.render.values', retval.values.join('###'))
+    return retval
   }
 
   _onDecrement() {
