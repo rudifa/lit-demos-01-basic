@@ -13,7 +13,7 @@
       margin: 1em;
       padding: 0;
       font-family: sans-serif;
-      background-color: #ededed;
+      background-color: #f0f0e7;
     }
     p {
       font-weight: bold;
@@ -26,9 +26,11 @@
 </head>
 
 <body>
+
   <div>
     <a href="https://github.com/open-wc/lit-demos/tree/master/01-basic" target="_blank">lit-demos-01-basic</a>
   </div>
+  <p>00-happui-slider</p>
   <p class='hot'>firing-events</p>
   <fire-events-parent></fire-events-parent>
   <div>
@@ -41,31 +43,31 @@
       slider1.addEventListener('event-slider', (e) => {para1.innerHTML=`slider1 ${e.detail}`});
     </script>
   </div>
-  <p>basic-setup</p>
+  <p>01-basic-setup</p>
   <basic-setup></basic-setup>
-  <p>manage-properties</p>
+  <p>02-manage-properties</p>
   <manage-properties></manage-properties>
-  <p>property-changes</p>
+  <p>03-property-changes</p>
   <property-changes></property-changes>
-  <p>properties-and-attributes</p>
+  <p>04-properties-and-attributes</p>
   <properties-and-attributes message="Hello world of properties and attributes"></properties-and-attributes>
   <fancy-message messagePrefix="Here is the news:" message="web components fly"></fancy-message>
-  <p>passing-properties</p>
+  <p>05-passing-properties</p>
   <passing-properties></passing-properties>
   <!-- how do we initialize properties of type Object or Array ?
   <author-profile .author="{'name': 'G.R.R. Martin'}"></author-profile> -->
-  <p>handle-events</p>
+  <p>06-handle-events</p>
   <handle-events></handle-events>
-  <p>conditional-rendering</p>
+  <p>07-conditional-rendering</p>
   <conditional-rendering message="Conditional message..."></conditional-rendering>
   <conditional-rendering disabled="true"></conditional-rendering>
-  <p>repeated-templates</p>
+  <p>08-repeated-templates</p>
   <repeated-templates></repeated-templates>
-  <p>update-arrays-and-objects</p>
+  <p>09-update-arrays-and-objects</p>
   <update-arrays-and-objects></update-arrays-and-objects>
-  <p>render-styles</p>
+  <p>10-render-styles</p>
   <render-styles></render-styles>
-  <p>fetching-data</p>
+  <p>11-fetching-data</p>
   <fetching-data></fetching-data>
   <!--
   <p>firing-events</p>
